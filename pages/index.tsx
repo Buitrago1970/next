@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Layout from '@components/Layout/Layout'
 import KawaiiHeader from '@components/KawaiiHeader/KawaiiHeader'
 import ProductList from '@components/ProductList/ProductList'
 
-const HomePage = () => {
-  const [productList, setProductList] = useState<TProduct[]>([])
+export const getServerSideProps = async () => {
 
-  useEffect(() => {
-    window
-      .fetch('/api/avo')
-      .then((response) => response.json())
-      .then(({ data }: TAPIAvoResponse) => {
-        setProductList(data)
-      })
-  }, [])
+  const response = await fetch('https://platzi-avo.vercel.app/api/avo')
+  const {data: productList}: TAPIAvoResponse = await response.json()
+
+  return{
+    props:{
+      productList,
+    }
+  }
+}
+
+
+const HomePage = ({productList}:{productList: TProduct[]}) => {
 
   return (
     <Layout>
