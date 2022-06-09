@@ -1,6 +1,4 @@
 import React from 'react'
-import fetch from 'isomorphic-unfetch'
-
 import Layout from '@components/Layout/Layout'
 import ProductSummary from '@components/ProductSummary/ProductSummary'
 import { GetStaticPaths, GetStaticProps } from 'next'
