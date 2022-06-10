@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
 import Link from 'next/link'
+// import Image from 'next/image'
 
 type ProductListProps = {
   products: TProduct[]
